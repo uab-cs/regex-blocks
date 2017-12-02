@@ -4,8 +4,17 @@ export class Text extends RegexBlock {
 
     public constructor(public text : string) {     super();    }
 
+    getType(): string { return "single"; }
+
+    getText() : string { return this.text;  }
+
+    shouldEscape() : boolean { return true; }
+
     render(): string {
-        return Text.escape(this.text);
+        if (this.shouldEscape()) {
+            return Text.escape(this.getText());
+        }
+        return this.getText();
     }
 
     static escape(input : string) : string {

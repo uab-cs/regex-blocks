@@ -1,4 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Text} from '../../models/blocks/Text';
+import {Expression} from '../../models/blocks/Expression';
+import {OrBlock} from '../../models/blocks/OrBlock';
+import {Word} from '../../models/blocks/Word';
+import {Whitespace} from '../../models/blocks/Whitespace';
 
 declare let $: any;
 
@@ -10,7 +15,9 @@ declare let $: any;
 })
 export class RegexComponent implements OnInit {
 
-  blocks: any[] = [];
+  selectedChip = null;
+
+  expression: Expression = new Expression();
 
   constructor() {}
 
@@ -21,48 +28,53 @@ export class RegexComponent implements OnInit {
   }
 
   addOr(){
-    let data = $('.chips-initial').material_chip('data');
-    let blocks = data.map( chip => { return {
-      type: 'single',
-      text: chip.tag
-    } });
-    this.blocks.push({
-      type: 'or',
-      classes: 'orBl',
-      children: blocks
-    })
+      let data = $('.chips-initial').material_chip('data');
+      let blocks = data.map( chip => {
+          return new Text(chip.tag);
+      });
+      this.expression.addChild( new OrBlock(blocks) );
+
+    //   let blocks = data.map( chip => { return {
+    //   type: 'single',
+    //   text: chip.tag
+    // } });
+    // this.blocks.push({
+    //   type: 'or',
+    //   classes: 'orBl',
+    //   children: blocks
+    // })
   }
 
   addDigit(){
-    this.blocks.push({
-      type: 'single',
-      text: "any digit",
-      classes: 'digitChip'
-    });
+    this.expression.addChild(new Text("\\d"));
+    // this.blocks.push({
+    //   type: 'single',
+    //   text: "any digit",
+    //   classes: 'digitChip'
+    // });
   }
 
   addWord(){
-    this.blocks.push({
-      type: 'single',
-      text: "any word",
-      classes: 'wordChip'
-    });
+    this.expression.addChild(new Word("any word"));
+    // this.blocks.push({
+    //   type: 'single',
+    //   text: "any word",
+    //   classes: 'wordChip'
+    // });
   }
   addWhitespace(){
-    this.blocks.push({
-      type: 'single',
-      text: "whitespace",
-      classes: 'whitespaceChip'
-    });
+    this.expression.addChild(new Whitespace("whitespace"));
+    // this.blocks.push({
+    //   type: 'single',
+    //   text: "whitespace",
+    //   classes: 'whitespaceChip'
+    // });
   }
 
   stringInput = "";
   addString(string){
-    this.blocks.push({
-      type: 'single',
-      text: string,
-      not: false
-    });
+    let block = new Text(string);
+    this.expression.addChild(block);
     this.stringInput = "";
   }
 

@@ -3,6 +3,7 @@ import {Quantifier} from '../Quantifier';
 
 
 export class Expression extends RegexBlock {
+    getType(): string { return "expression"; }
 
     public constructor(public children : RegexBlock[] = [], public quantifier : Quantifier = null) {  super();    }
 
@@ -11,14 +12,8 @@ export class Expression extends RegexBlock {
     }
 
     public render(): string {
-        let result = "";
-        for (let child of this.children){
-            result += child.render();
-        }
-        if (this.shouldGroup(result)) {
-            return Expression.group(result);
-        }
-        return result;
+        let result = this.concatenate();
+        return this.group(result);
     }
 
     /**
@@ -34,15 +29,30 @@ export class Expression extends RegexBlock {
         return text;
     }
 
-    private static isMultiChar(text : string) {
-        return !text.match(/^(?:\\?.|\[.*\]|\(.*\))$/);
-    }
-
-    private shouldGroup(text: string) {
+    protected shouldGroup(text : string) : boolean {
         let isMulti = Expression.isMultiChar(text);
         if (this.quantifier === null) {
             return isMulti && this.children.length > 1;
         }
         return isMulti;
+    }
+
+    protected concatenate() : string {
+        let result = "";
+        for (let child of this.children){
+            result += child.render();
+        }
+        return result;
+    }
+
+    private group(text : string) : string {
+        if (this.shouldGroup(text)) {
+            return Expression.group(text);
+        }
+        return text;
+    }
+
+    private static isMultiChar(text : string) {
+        return !text.match(/^(?:\\?.|\[.*\]|\(.*\))$/);
     }
 }
