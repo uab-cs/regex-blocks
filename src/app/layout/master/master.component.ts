@@ -96,6 +96,7 @@ export class MasterComponent implements AfterViewInit {
         });
 
         $('.collapsible').collapsible();
+        this.toggleSidebar();
     }
 
 }

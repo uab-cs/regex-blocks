@@ -9,7 +9,13 @@ export class SingleBlockComponent implements OnInit {
 
   @Input('block') block;
 
-  constructor() { }
+  classes = '';
+
+  constructor() {}
+
+  handleClick(){
+
+  }
 
   ngOnInit() { }
 

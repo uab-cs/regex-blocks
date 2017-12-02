@@ -1,8 +1,5 @@
 <main class="mn-inner">
   <div class="row">
-    <div class="col s12">
-      <div class="page-title">Form Elements</div>
-    </div>
     <div class="col s12 m12 l12">
       <div class="card">
         <div class="card-content">
@@ -16,12 +13,18 @@
                 </span>
               </div>
               <div class="row">
-                <div class="col s12">
-                  <a (click)="addWord()" class="waves-effect waves-light btn"> any word </a>
-                  <a (click)="addDigit()" class="waves-effect waves-light btn"> any number </a>
-                  <a (click)="addWhitespace()" class="waves-effect waves-light btn"> whitespace </a>
+                <div class="col s8">
+                  <a (click)="addWord()" class="waves-effect waves-light blue btn"> any word </a>
+                  <a (click)="addDigit()" class="waves-effect waves-light blue btn"> any number </a>
+                  <a (click)="addWhitespace()" class="waves-effect waves-light blue btn"> whitespace </a>
                   <a (click)="generate()" class="waves-effect waves-light orange btn"> Generate! </a>
                 </div>
+                <div class="col s4">
+                  <h6>Output Shows Here:</h6>
+                  <a href="javascript:void(0)"><h5>{{regex}}</h5></a>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col s6">
                   <div class="row">
                     <div class="input-field inline">

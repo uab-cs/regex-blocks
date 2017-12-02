@@ -7,6 +7,7 @@ import {Whitespace} from '../../models/blocks/Whitespace';
 import {Digit} from '../../models/blocks/Digit';
 
 declare let $: any;
+declare let Materialize: any;
 
 @Component({
   selector: 'app-main',
@@ -19,6 +20,7 @@ export class RegexComponent implements OnInit {
   selectedChip = null;
 
   expression: Expression = new Expression();
+  regex: string = "";
 
   constructor() {}
 
@@ -80,9 +82,11 @@ export class RegexComponent implements OnInit {
   }
 
   testStrings: string[] = [];
-  highlight(str: string, regex: string){
-    if(!regex) return str;
-    return str.replace(new RegExp(regex, "gi"), match => {
+  highlight(str: string){
+    if(!this.regex) return str;
+    let compiled = new RegExp(this.regex, 'gi');
+    console.log(compiled);
+    return str.replace(compiled, match => {
       return '<span class="highlightText">' + match + '</span>';
     });
   }
@@ -95,6 +99,7 @@ export class RegexComponent implements OnInit {
   }
 
   generate(){
-    alert(this.expression.render());
+    this.regex = this.expression.render();
+    Materialize.toast('Generated Regex!', 4000)
   }
 }
