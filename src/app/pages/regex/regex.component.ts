@@ -46,7 +46,7 @@ export class RegexComponent implements OnInit {
   }
 
   addDigit(){
-    this.expression.addChild(new Text("\\d"));
+    this.expression.addChild(new Digit("any digit"));
     // this.blocks.push({
     //   type: 'single',
     //   text: "any digit",
