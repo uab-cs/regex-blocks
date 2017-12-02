@@ -5,7 +5,7 @@ import {Quantifier} from '../Quantifier';
 export class Expression extends RegexBlock {
     getType(): string { return "expression"; }
 
-    public constructor(public children : RegexBlock[] = [], public quantifier : Quantifier = null) {  super();    }
+    public constructor(public quantifier : Quantifier = null, public children : RegexBlock[] = []) {  super();    }
 
     public addChild(child : RegexBlock) {
         this.children.push(child);
@@ -45,14 +45,14 @@ export class Expression extends RegexBlock {
         return result;
     }
 
-    private group(text : string) : string {
+    protected group(text : string) : string {
         if (this.shouldGroup(text)) {
             return Expression.group(text);
         }
         return text;
     }
 
-    private static isMultiChar(text : string) {
+    protected static isMultiChar(text : string) {
         return !text.match(/^(?:\\?.|\[.*\]|\(.*\))$/);
     }
 }

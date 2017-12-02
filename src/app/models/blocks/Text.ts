@@ -1,8 +1,9 @@
-import {RegexBlock} from '../RegexBlock';
+import {Expression} from './Expression';
+import {Quantifier} from '../Quantifier';
 
-export class Text extends RegexBlock {
+export class Text extends Expression {
 
-    public constructor(public text : string) {     super();    }
+    public constructor(public text : string, public quantifier : Quantifier = null) {     super(quantifier);    }
 
     getType(): string { return "single"; }
 
@@ -14,7 +15,11 @@ export class Text extends RegexBlock {
         if (this.shouldEscape()) {
             return Text.escape(this.getText());
         }
-        return this.getText();
+        return this.group(this.getText());
+    }
+
+    protected shouldGroup (text : string) : boolean {
+        return this.quantifier !== null && Text.isMultiChar(text);
     }
 
     static escape(input : string) : string {
