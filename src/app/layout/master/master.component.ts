@@ -1,8 +1,5 @@
 import {Component, ViewEncapsulation, AfterViewInit, OnInit} from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
 import {Router} from "@angular/router";
-import {User} from "../../models/User";
-import {UserService} from "../../auth/user.service";
 
 declare let $: any;
 
@@ -11,9 +8,7 @@ declare let $: any;
     templateUrl: './master.component.html',
     encapsulation: ViewEncapsulation.None
 })
-export class MasterComponent implements AfterViewInit, OnInit {
-
-    user: User;
+export class MasterComponent implements AfterViewInit {
 
     md_hamburger_icon;
     sidebar_account_settings;
@@ -24,24 +19,14 @@ export class MasterComponent implements AfterViewInit, OnInit {
             name: "Admin Book",
             icon: "shopping_cart",
             route: 'booking'
-        },
-        {
-            name: "Admin Events",
-            icon: "today",
-            route: "events"
         }
     ];
 
     constructor(
-        private userService: UserService,
-        private authService: AuthService,
         private router: Router
     ) { }
 
-    handleLogout(){
-        this.authService.logout();
-        this.router.navigateByUrl('/login');
-    }
+    handleLogout(){}
 
     toggleSidebar(){
         document.body.classList.toggle('background--blur');
@@ -113,7 +98,4 @@ export class MasterComponent implements AfterViewInit, OnInit {
         $('.collapsible').collapsible();
     }
 
-    ngOnInit(){
-        this.user = this.userService.user;
-    }
 }
