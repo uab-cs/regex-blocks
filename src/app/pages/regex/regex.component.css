@@ -13,3 +13,7 @@
   background-color: lightblue;
   font-style: italic;
 }
+
+.highlightText {
+  background: yellow;
+}

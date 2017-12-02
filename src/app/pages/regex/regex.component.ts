@@ -10,22 +10,13 @@ declare let $: any;
 })
 export class RegexComponent implements OnInit {
 
-  selectedChip = null;
-
   blocks: any[] = [];
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
     $('.chips-initial').material_chip({
-      data: [{
-        tag: 'Apple',
-      }, {
-        tag: 'Microsoft',
-      }, {
-        tag: 'Google',
-      }],
+      data: [],
     });
   }
 
@@ -43,13 +34,13 @@ export class RegexComponent implements OnInit {
   }
 
   addDigit(){
-    this.blocks.push(BlockFactory.create("digit"))
     this.blocks.push({
       type: 'single',
       text: "any digit",
       classes: 'digitChip'
     });
   }
+
   addWord(){
     this.blocks.push({
       type: 'single',
@@ -73,5 +64,20 @@ export class RegexComponent implements OnInit {
       not: false
     });
     this.stringInput = "";
+  }
+
+  testStrings: string[] = [];
+  highlight(str: string, regex: string){
+    if(!regex) return str;
+    return str.replace(new RegExp(regex, "gi"), match => {
+      return '<span class="highlightText">' + match + '</span>';
+    });
+  }
+
+  testStringField = "";
+  addTestString(){
+    if(this.testStringField)
+      this.testStrings.push(this.testStringField);
+    this.testStringField = "";
   }
 }
