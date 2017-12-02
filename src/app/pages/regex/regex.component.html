@@ -10,7 +10,7 @@
           <div class="row">
             <form class="col s12">
               <div class="row">
-                <span *ngFor="let block of blocks" [ngSwitch]="block.type">
+                <span *ngFor="let block of expression.children" [ngSwitch]="block.type">
                   <single-block *ngSwitchCase="'single'" [block]="block"></single-block>
                   <or-block *ngSwitchCase="'or'" [block]="block"></or-block>
                 </span>
