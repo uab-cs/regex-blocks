@@ -92,4 +92,8 @@ export class RegexComponent implements OnInit {
       this.testStrings.push(this.testStringField);
     this.testStringField = "";
   }
+
+  generate(){
+    alert(this.expression.render());
+  }
 }
