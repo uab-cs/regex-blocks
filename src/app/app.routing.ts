@@ -1,20 +1,15 @@
 import {MasterComponent} from "./layout/master/master.component";
 import {Routes, RouterModule} from "@angular/router";
-import {BookingComponent} from "./pages/booking/booking.component";
+import {MainComponent} from "./pages/main/main.component";
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/booking',
-        pathMatch: 'full'
-    },
-    {
-        path: 'dashboard',
         component: MasterComponent,
         children: [
             {
-                path: 'booking',
-                component: BookingComponent
+                path: '',
+                component: MainComponent
             }
         ]
     }
@@ -22,4 +17,4 @@ const routes: Routes = [
 
 export const routing = RouterModule.forRoot(routes);
 
-export const routedComponents = [MasterComponent, BookingComponent];
+export const routedComponents = [MasterComponent, MainComponent];
