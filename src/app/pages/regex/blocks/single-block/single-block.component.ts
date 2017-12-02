@@ -9,12 +9,10 @@ export class SingleBlockComponent implements OnInit {
 
   @Input('block') block;
 
-  classes = '';
-
   constructor() {}
 
   handleClick(){
-
+    // add quantifier
   }
 
   ngOnInit() { }
