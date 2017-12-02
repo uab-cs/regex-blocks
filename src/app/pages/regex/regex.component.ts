@@ -5,7 +5,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
     templateUrl: './regex.component.html',
     encapsulation: ViewEncapsulation.None
 })
-export class MainComponent implements OnInit {
+export class RegexComponent implements OnInit {
 
     constructor() { }
 

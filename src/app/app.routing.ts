@@ -1,6 +1,6 @@
 import {MasterComponent} from "./layout/master/master.component";
 import {Routes, RouterModule} from "@angular/router";
-import {MainComponent} from "./pages/regex/regex.component";
+import {RegexComponent} from "./pages/regex/regex.component";
 
 const routes: Routes = [
     {
@@ -9,7 +9,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component: MainComponent
+                component: RegexComponent
             }
         ]
     }
@@ -17,4 +17,4 @@ const routes: Routes = [
 
 export const routing = RouterModule.forRoot(routes);
 
-export const routedComponents = [MasterComponent, MainComponent];
+export const routedComponents = [MasterComponent, RegexComponent];
