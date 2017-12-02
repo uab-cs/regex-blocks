@@ -1,0 +1,43 @@
+<main class="mn-inner">
+    <div class="row">
+        <div class="col s12">
+            <div class="page-title">Admin Booking Form</div>
+        </div>
+        <div class="col s12 m12 l12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <form class="col l6">
+                            <div class="row">
+                                <app-user-selector
+                                    (onUserSelect)="onUserSelect($event)"
+                                    (onUserDeselect)="onUserDeselect()">
+                                </app-user-selector>
+
+                                <div class="input-field col s12">
+                                    <app-market-selector
+                                        (onMarketSelect)="onMarketSelect($event)">
+                                    </app-market-selector>
+                                </div>
+
+                                <div class="col s12">
+                                    <label for="eventDateField">Event Date</label>
+                                    <input name="date" id="eventDateField" class="datepicker"
+                                           materialize="pickadate"
+                                           [(ngModel)]="date"
+                                           (change)="onDateSelect()">
+                                </div>
+                            </div>
+                        </form>
+                        <form>
+                            <div class="col l6">
+                                <img *ngIf="market" materialize="materialbox"
+                                     class="materialboxed responsive-img" [src]="market.image">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
