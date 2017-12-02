@@ -4,6 +4,7 @@ import {Expression} from '../../models/blocks/Expression';
 import {OrBlock} from '../../models/blocks/OrBlock';
 import {Word} from '../../models/blocks/Word';
 import {Whitespace} from '../../models/blocks/Whitespace';
+import {Digit} from '../../models/blocks/Digit';
 
 declare let $: any;
 
@@ -46,7 +47,7 @@ export class RegexComponent implements OnInit {
   }
 
   addDigit(){
-    this.expression.addChild(new Text("\\d"));
+    this.expression.addChild(new Digit("any digit"));
     // this.blocks.push({
     //   type: 'single',
     //   text: "any digit",
