@@ -8,12 +8,16 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
 import {MaterializeModule} from "angular2-materialize";
+import { OrBlockComponent } from './pages/regex/blocks/or-block/or-block.component';
+import { SingleBlockComponent } from './pages/regex/blocks/single-block/single-block.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MasterComponent,
         routedComponents,
+        OrBlockComponent,
+        SingleBlockComponent
     ],
     imports: [
         BrowserModule,
@@ -23,6 +27,7 @@ import {MaterializeModule} from "angular2-materialize";
         routing
     ],
     providers: [
+
     ],
     bootstrap: [AppComponent]
 })

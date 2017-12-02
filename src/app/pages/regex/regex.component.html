@@ -1,9 +1,46 @@
 <main class="mn-inner">
-    <div class="row">
-        <div class="col s12">
-            <div class="page-title">Admin Booking Form</div>
-        </div>
-        <div class="col s12 m12 l12">
-        </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="page-title">Form Elements</div>
     </div>
+    <div class="col s12 m12 l12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Regular Expression Builder</span><br>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <span *ngFor="let block of blocks" [ngSwitch]="block.type">
+                  <single-block *ngSwitchCase="'single'" [block]="block"></single-block>
+                  <or-block *ngSwitchCase="'or'" [block]="block"></or-block>
+                </span>
+              </div>
+              <div class="row">
+                <div class="col s6">
+                  <a (click)="addWord()" class="waves-effect waves-light btn"> any word </a>
+                  <a (click)="addDigit()" class="waves-effect waves-light btn"> any number </a>
+                  <a (click)="addWhitespace()" class="waves-effect waves-light btn"> whitespace </a>
+                </div>
+                <div class="col s6">
+                  <div class="row">
+                    <div class="input-field inline">
+                      <input [(ngModel)]="stringInput" name="stringInput" id="email" type="email" class="">
+                    </div>
+                    <a (click)="addString(stringInput)" class="waves-effect waves-light btn"> add </a>
+                  </div>
+                  <div class="row">
+                    <div class="chips chips-initial"></div>
+                    <a (click)="addOr()" class="waves-effect waves-light btn"> add or clause </a>
+                  </div>
+                </div>
+                <div class="col s6">
+
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
