@@ -28,6 +28,7 @@ export class RegexComponent implements OnInit {
     $('.chips-initial').material_chip({
       data: [],
     });
+    // this.expression.groupOverride(true);
   }
 
   addOr(){
@@ -35,8 +36,17 @@ export class RegexComponent implements OnInit {
       let blocks = data.map( chip => {
           return new Text(chip.tag);
       });
-      this.expression.addChild( new OrBlock(blocks) );
-      console.log(this.expression);
+      this.expression.addChild( new OrBlock(null, blocks) );
+
+    //   let blocks = data.map( chip => { return {
+    //   type: 'single',
+    //   text: chip.tag
+    // } });
+    // this.blocks.push({
+    //   type: 'or',
+    //   classes: 'orBl',
+    //   children: blocks
+    // })
   }
 
   addDigit(){

@@ -5,6 +5,12 @@ import {Quantifier} from '../Quantifier';
 export class Expression extends RegexBlock {
     getType(): string { return "expression"; }
 
+    protected groupingOverride = false;
+
+    public groupOverride (override : boolean = false) {
+        this.groupingOverride = override;
+    }
+
     public constructor(public quantifier : Quantifier = null, public children : RegexBlock[] = []) {  super();    }
 
     public addChild(child : RegexBlock) {
@@ -30,6 +36,9 @@ export class Expression extends RegexBlock {
     }
 
     protected shouldGroup(text : string) : boolean {
+        if (this.groupingOverride) {
+            return false;
+        }
         let isMulti = Expression.isMultiChar(text);
         if (this.quantifier === null) {
             return isMulti && this.children.length > 1;
