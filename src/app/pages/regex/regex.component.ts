@@ -36,16 +36,7 @@ export class RegexComponent implements OnInit {
           return new Text(chip.tag);
       });
       this.expression.addChild( new OrBlock(blocks) );
-
-    //   let blocks = data.map( chip => { return {
-    //   type: 'single',
-    //   text: chip.tag
-    // } });
-    // this.blocks.push({
-    //   type: 'or',
-    //   classes: 'orBl',
-    //   children: blocks
-    // })
+      console.log(this.expression);
   }
 
   addDigit(){
@@ -67,11 +58,6 @@ export class RegexComponent implements OnInit {
   }
   addWhitespace(){
     this.expression.addChild(new Whitespace("whitespace"));
-    // this.blocks.push({
-    //   type: 'single',
-    //   text: "whitespace",
-    //   classes: 'whitespaceChip'
-    // });
   }
 
   stringInput = "";
@@ -100,6 +86,7 @@ export class RegexComponent implements OnInit {
 
   generate(){
     this.regex = this.expression.render();
+    console.log(this.expression);
     Materialize.toast('Generated Regex!', 4000)
   }
 }

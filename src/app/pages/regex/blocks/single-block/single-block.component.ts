@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {KleeneStar} from "../../../../models/quantifiers/KleeneStar";
 
 @Component({
   selector: 'single-block',
@@ -9,10 +10,18 @@ export class SingleBlockComponent implements OnInit {
 
   @Input('block') block;
 
+  classes;
+
   constructor() {}
 
   handleClick(){
-    // add quantifier
+    if(this.block.quantifier){
+      this.classes = '';
+      this.block.quantifier = null;
+      return;
+    }
+    this.block.quantifier = new KleeneStar();
+    this.classes = 'quantified';
   }
 
   ngOnInit() { }

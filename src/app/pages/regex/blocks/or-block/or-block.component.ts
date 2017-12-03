@@ -9,7 +9,9 @@ export class OrBlockComponent implements OnInit {
 
   @Input('block') block;
 
-  constructor() { }
+  constructor() {
+    console.log(this.block);
+  }
 
   ngOnInit() {
   }
