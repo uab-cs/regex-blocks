@@ -18,6 +18,9 @@
                   <or-block *ngSwitchCase="'or'" [block]="block"></or-block>
                 </span>
               </div>
+              <br/>
+              <hr/>
+              <br/>
               <div class="row">
                 <div class="col s8">
                   <a (click)="addWord()" class="waves-effect waves-light blue btn"> any word </a>
@@ -60,7 +63,9 @@
                   </form>
                 </div>
               </div>
-              <span class="chip quantified" style="float: right">one <b>or more</b> occurrences</span>
+              <span class="chip kplus" style="float: right">one <b>or more</b> occurrences</span>
+              <span class="chip kstar" style="float: right">zero <b>or more</b> occurrences</span>
+              <span class="chip koption" style="float: right">optional</span>
               <span class="chip" style="float: right">single occurrence</span>
             </form>
           </div>

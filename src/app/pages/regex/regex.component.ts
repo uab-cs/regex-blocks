@@ -22,7 +22,11 @@ export class RegexComponent implements OnInit {
   expression: Expression = new Expression();
   regex: string = "";
 
-  constructor() {}
+  constructor() {
+    this.expression.subscribe(() => {
+      this.regex = this.expression.render();
+    })
+  }
 
   ngOnInit() {
     $('.chips-initial').material_chip({

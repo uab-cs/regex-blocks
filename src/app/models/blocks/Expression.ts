@@ -15,11 +15,20 @@ export class Expression extends RegexBlock {
 
     public addChild(child : RegexBlock) {
         this.children.push(child);
+        this.notify();
     }
 
     public render(): string {
         let result = this.concatenate();
         return this.group(result);
+    }
+
+    listeners = [];
+    public subscribe( cb ){
+      this.listeners.push(cb);
+    }
+    public notify(){
+      this.listeners.forEach( cb => cb() );
     }
 
     /**
