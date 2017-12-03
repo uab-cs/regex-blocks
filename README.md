@@ -1,4 +1,4 @@
-#RegEx Blocks
+# RegEx Blocks
 
 ## What it does
 RegEx Blocks is an interactive visual interface for building and testing regular expressions. It's great for research professionals or people learning regex.
