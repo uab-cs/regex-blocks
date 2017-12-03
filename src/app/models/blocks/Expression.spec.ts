@@ -5,8 +5,8 @@ describe("Expression should ", () => {
     let text1 = new Text("hello, world!");
     let text2 = new Text("indeed");
 
-    let expression1 = new Expression([text1]);
-    let expression2 = new Expression([text1, text2]);
+    let expression1 = new Expression(null, [text1]);
+    let expression2 = new Expression(null, [text1, text2]);
 
     it('render one child without a non-capture group', () => {
         expect(expression1.render()).toEqual('hello, world!');
