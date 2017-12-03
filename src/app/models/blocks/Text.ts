@@ -15,7 +15,11 @@ export class Text extends Expression {
         if (this.shouldEscape()) {
             return Text.escape(this.getText());
         }
-        return this.group(this.getText());
+        let result = this.group(this.getText());
+        if (this.quantifier !== null) {
+            result += this.quantifier.render();
+        }
+        return result;
     }
 
     protected shouldGroup (text : string) : boolean {
