@@ -6,6 +6,7 @@ describe("Text should ", () => {
     let text1 = new Text("hello");
     let text2 = new Text(".escapemeplease");
     let text3 = new Word("imma word", new KleeneStar());
+    let text4 = new Text("imma word", new KleeneStar());
 
     it('render itself simply', function () {
         expect(text1.render()).toEqual('hello');
@@ -17,5 +18,6 @@ describe("Text should ", () => {
 
     it('apply quantifier', () => {
         expect(text3.render()).toEqual('\\w*');
+        expect(text4.render()).toEqual('(?:imma word)*');
     });
 });

@@ -12,10 +12,11 @@ export class Text extends Expression {
     shouldEscape() : boolean { return true; }
 
     render(): string {
+        let result = "";
         if (this.shouldEscape()) {
-            return Text.escape(this.getText());
+            result = Text.escape(this.getText());
         }
-        let result = this.group(this.getText());
+        result = this.group(this.getText());
         if (this.quantifier !== null) {
             result += this.quantifier.render();
         }

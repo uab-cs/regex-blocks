@@ -16,6 +16,10 @@ describe("Expression should ", () => {
         expect(expression2.render()).toEqual("(?:hello, world!indeed)");
     });
 
+    it('render sub-components nicely', () => {
+
+    });
+
 
     it ('correctly group text if necessary', () => {
         let groupingTests = {
