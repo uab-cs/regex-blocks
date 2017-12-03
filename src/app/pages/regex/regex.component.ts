@@ -28,7 +28,7 @@ export class RegexComponent implements OnInit {
     $('.chips-initial').material_chip({
       data: [],
     });
-    // this.expression.groupOverride(true);
+    this.expression.groupOverride(true);
   }
 
   addOr(){

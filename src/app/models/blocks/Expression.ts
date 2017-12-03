@@ -36,11 +36,11 @@ export class Expression extends RegexBlock {
     }
 
     protected shouldGroup(text : string) : boolean {
-        if (this.groupingOverride) {
-            return false;
-        }
         let isMulti = Expression.isMultiChar(text);
         if (this.quantifier === null) {
+            if (this.groupingOverride) {
+                return false;
+            }
             return isMulti && this.children.length > 1;
         }
         return isMulti;
