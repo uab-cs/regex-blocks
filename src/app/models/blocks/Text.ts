@@ -12,11 +12,11 @@ export class Text extends Expression {
     shouldEscape() : boolean { return true; }
 
     render(): string {
-        let result = "";
+        let result = this.getText();
         if (this.shouldEscape()) {
-            result = Text.escape(this.getText());
+            result = Text.escape(result);
         }
-        result = this.group(this.getText());
+        result = this.group(result);
         if (this.quantifier !== null) {
             result += this.quantifier.render();
         }
@@ -28,7 +28,6 @@ export class Text extends Expression {
     }
 
     static escape(input : string) : string {
-        //TODO
-        return input;
+        return input.replace(/([-\/\\^$*+?:.()|[\]{}])/g, '\\$1');
     }
 }

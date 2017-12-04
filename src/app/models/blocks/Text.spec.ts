@@ -4,7 +4,7 @@ import {KleeneStar} from '../quantifiers/KleeneStar';
 
 describe("Text should ", () => {
     let text1 = new Text("hello");
-    let text2 = new Text(".escapemeplease");
+    let text2 = new Text(`(?:\\w|.)+@[a-z]+\\.(?:com|net|org)`);
     let text3 = new Word("imma word", new KleeneStar());
     let text4 = new Text("imma word", new KleeneStar());
 
@@ -13,7 +13,7 @@ describe("Text should ", () => {
     });
 
     it('escape reserved characters', function () {
-        expect(text2.render()).toEqual('\\.escapemeplease');
+        expect(text2.render()).toEqual(`\\(\\?\\:\\\\w\\|\\.\\)\\+@\\[a\\-z\\]\\+\\\\\\.\\(\\?\\:com\\|net\\|org\\)`);
     });
 
     it('apply quantifier', () => {
