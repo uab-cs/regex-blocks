@@ -1,5 +1,7 @@
 # RegEx Blocks
 
+See Devpost <a href=https://devpost.com/software/regex-blocks>submission</a> for more details.
+
 ## What it does
 RegEx Blocks is an interactive visual interface for building and testing regular expressions. It's great for research professionals or people learning regex.
 
